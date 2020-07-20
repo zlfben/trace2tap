@@ -1,0 +1,97 @@
+.ruleoption {
+    margin:10px auto; 
+    text-align: center;
+    padding-top: 40px;
+    padding-bottom:40px;
+}
+
+.ruleoption span {
+    font-size: 35px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.rule-display {
+    padding: 3px 0 5px 10px;
+    display: inline-block;
+}
+
+.rule-blocks {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+div.rule-block {
+    padding: 5px;
+}
+
+/* div.rule-word, div.rule-icon {
+    display: inline-block;
+    position: relative;
+    text-align: center;
+    font-size: 24px;
+} */
+
+.rule-icon {
+    margin-left: 10px;
+    padding: 0 2px 4px 2px;
+}
+
+.rule-icon mat-icon {
+    position: relative;
+    top: 4px;
+    color: #000000;
+}
+
+.rule-manage {
+    margin: 0 20px 0 auto;
+    display: flex;
+}
+
+.rule-manage mat-icon {
+    cursor: pointer;
+    font-size: 35px;
+    position: relative;
+    top: -4px;
+    padding: 0 25px;
+    color:  #000000;
+}
+
+.rule-manage button.mat-raised-button {
+    line-height: 15px;
+}
+
+.rule-table {
+    border: none;
+    text-align: left;
+    margin-left: 10px;
+}
+
+.rule-content {
+    font-size: 20px;
+}
+
+.rule-word {
+    width: 100px;
+    font-size: 24px;
+    color: rgb(0, 153, 255);
+    font-weight: bold;
+    height: 2em;
+}
+
+mat-icon {
+    font-family: 'Material Icons' !important;
+}
+
+mat-list {
+    padding-top: 0 !important;
+}
+
+mat-list-item:nth-child(odd) {
+    background-color: #ccebff;
+}
+
+mat-list-item {
+    height: auto !important;
+}

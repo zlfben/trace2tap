@@ -1,0 +1,4 @@
+FROM nginx
+COPY ./ssl/superifttt.crt /etc/ssl/certs/superifttt.crt
+COPY ./ssl/private/superifttt.key /etc/ssl/private/superifttt.key
+COPY ./nginx/nginx.conf /etc/nginx/nginx.conf

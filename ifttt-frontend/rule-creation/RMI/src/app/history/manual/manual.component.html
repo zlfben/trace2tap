@@ -1,0 +1,32 @@
+<div class="nav">
+  <div class="back" (click)="goToDashboard()">←</div>
+  <mat-icon>assignment</mat-icon>
+  <div class="title">
+    <h1>Rule Change History</h1>
+  </div>
+  <div class="newrule">
+  </div> 
+</div>
+
+<ng-container *ngIf="finish">
+  <div class="ruleoption">
+    <button mat-raised-button class="navi" (click)="gotoPrev()">Prev</button>
+    <span>Checkpoint {{currentPatchId}}/{{rulePatches.length}}</span>
+    <button mat-raised-button class="navi" (click)="gotoNext()">Next</button>
+    <br>
+    <span>All your rules at {{ currentPatchId?(rulePatches[currentPatchId-1]['time'] | date: 'medium'):"Initial" }}</span>
+  </div>
+  
+  <mat-list>
+    <mat-list-item class="rule-display" *ngFor="let rule of RULES; let i = index">
+      <div class="rule-blocks">
+        <table class="rule-table">
+          <tr class="rule-table" *ngFor="let word of rule.words; let i = index">
+            <td class="rule-word rule-table">{{rule.words[i] == "and"? "" :rule.words[i]}}</td>
+            <td class="rule-content rule-table">{{rule.descriptions[i]}}</td>
+          </tr>
+        </table>
+      </div>
+    </mat-list-item>
+  </mat-list>
+</ng-container>

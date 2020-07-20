@@ -1,0 +1,45 @@
+events { }
+
+http {
+
+    server {
+        server_name $domain;
+        
+        proxy_read_timeout 600s;
+        listen 80;
+
+        location /iotcore {
+            proxy_set_header X-Real-IP  $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+            proxy_set_header Host $host;
+            proxy_pass http://iotcore:8001;
+        }
+
+        location /iotcore/static {
+            include /etc/nginx/mime.types;
+            root /etc;
+        }
+
+        location /backend {
+            proxy_set_header X-Real-IP  $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+            proxy_set_header Host $host;
+            proxy_pass http://backend:8000;
+        }
+
+        location /backend/static {
+            include /etc/nginx/mime.types;
+            root /etc;
+        }
+
+        location / {
+            proxy_set_header X-Real-IP  $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+            proxy_set_header Host $host;
+            proxy_pass http://frontend:4200;
+        }
+    }
+}

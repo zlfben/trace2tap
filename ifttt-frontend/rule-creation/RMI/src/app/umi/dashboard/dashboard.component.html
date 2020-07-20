@@ -1,0 +1,69 @@
+<mat-sidenav-container>
+    <mat-sidenav #snav mode="push" [(opened)]="sideNavOpened" class="sidenav">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h1 id="snav-username">{{username}}</h1>
+                </div>
+            </div>
+            <hr />
+            <mat-list>
+                <mat-list-item *ngFor="let loc of locations" class="location-list-item">
+                    <button mat-button (click)="changeLoc(loc)" class="btn w-100 text-left">{{loc.name}}</button>
+                </mat-list-item>
+            </mat-list>
+            <div class="row">
+                <div class="col-sm-12">
+                    <hr>
+                    <button mat-button id="logout" (click)="logout()" class="btn">Logout</button>
+                </div>
+            </div>
+        </div>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+        <div class="nav">
+            <button mat-icon-button (click)="snav.toggle()" id="snav-btn"><mat-icon>menu</mat-icon></button>
+            <h1>Dashboard</h1>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3" class="addnew">
+                    <button (click)="goToRuleManagement()">Manage My Rules</button>
+                </div>
+            </div>
+            <div class="row align-items-center justify-content-center h-100" *ngIf="showSpinner">
+                <div class="col-3">
+                    <mat-spinner></mat-spinner>
+                </div>
+            </div>
+            <div class="row" *ngIf="!showSpinner">
+                <div class="col-lg-3 col-md-4 col-sm-6" *ngFor="let device of devices">
+                    <mat-card class="device-card">
+                        <div class="row">
+                            <div class="col-4">
+                                <mat-icon class="dev-icon">{{device.icon}}</mat-icon>
+                            </div>
+                            <div class="col-8">
+                                <div class="dev-name" *ngIf="device.label && device.label !== ''; else showName">{{device.label}}</div>
+                                <ng-template class="dev-name" #showName>{{device.name}}</ng-template>
+                                <div>
+                                    <mat-slide-toggle (change)="changeDevState(device)" [checked]="device.mainState" *ngIf="device.mainState !== null">{{device.mainStateLabel}}</mat-slide-toggle>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row align-items-end">
+                            <div class="col-12">
+                                <div class="dev-subscribe">
+                                    <button mat-button *ngIf="!device.subscribed" class="btn btn-sm">+ Subscribe</button>
+                                    <button mat-button *ngIf="device.subscribed" [disabled]="device.subscribed" class="btn btn-sm">Subscribed</button>
+                                </div>
+                            </div>
+                        </div>
+                    </mat-card>
+                </div>
+            </div>
+            
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

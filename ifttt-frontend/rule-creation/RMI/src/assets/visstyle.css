@@ -1,0 +1,17 @@
+table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  border-spacing: 5px 10px;
+  table-layout: fixed;
+}
+tr { border: none; }
+td {
+  border-right: solid 1px #f00; 
+  border-left: solid 1px #f00;
+  text-align: center; 
+  vertical-align: middle; }
+
+th {
+  text-align: center;
+}

@@ -1,0 +1,89 @@
+/* Nav */
+
+.nav {
+    width: 100%;
+    line-height: 100px;
+    background: rgb(0, 153, 255);
+    font-family: Lato, sans-serif;
+    text-align: center;
+    color: #fff;
+    font-weight: bold;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+.nav h1 {
+    font-size: 48px;
+    margin: auto;
+    padding-right: 30px;
+}
+
+#snav-btn {
+    margin: 30px 20px;
+    color: #fff;
+}
+
+#snav-btn mat-icon {
+    font-size: 3.5em;
+}
+
+/* Side Nav */
+
+mat-sidenav-container {
+    height: 100%;
+}
+
+#snav-username {
+    margin: 20px 16px;
+}
+
+.location-list-item:hover {
+    background: #f2f2f2;
+}
+
+#logout {
+    margin-left: 16px;
+}
+
+#logout:hover {
+    cursor: pointer;
+}
+
+/* Content */
+
+.addnew > button {
+    display: block;
+    margin: auto 16px;
+    text-align: center;
+    background-color: rgb(0, 153, 255);
+    color: #ffffff;
+    padding: 8px 28px 8px 28px;
+    font-size: 20px;
+    border-radius: 5px;
+    border: none;
+    margin-bottom: 30px;
+}
+
+.addnew > button:hover{
+    background-color: #008ae6;
+}
+
+mat-card {
+    height: 150px;
+    margin: 5px 0px;
+}
+
+mat-slide-toggle {
+    margin-top: 10px;
+}
+
+.dev-subscribe > button {
+    margin-top: 20px;
+}
+
+.dev-icon {
+    font-size: 3.5em;
+}
+

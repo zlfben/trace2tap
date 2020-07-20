@@ -1,0 +1,85 @@
+<div class="outer">
+  <div class="nav">
+    <div class="back" (click)="goToDashboard()">←</div>
+    <mat-icon>assignment</mat-icon>
+    <div class="title">
+      <!-- <h1>Trace</h1> -->
+      <mat-form-field>
+        <mat-select (selectionChange)="changeCase()" [(value)]="currentCaseStr">
+          <ng-container *ngFor="let patch of respList; let i = index">
+            <mat-option [value]="i" class="selectoption">
+              {{ patch['time'] | date: 'medium' }}
+            </mat-option>
+          </ng-container>
+        </mat-select>
+      </mat-form-field>
+      
+    </div>
+    <div class="newrule">
+    </div>
+    <button mat-button class="currentrule" (click)="openDialog()">Show Current Rules</button>
+  </div>
+  
+  <div class="spincontainer" *ngIf="showSpinner">
+    <div class="row align-items-center justify-content-center h-100">
+      <div class="col-6">
+        <mat-spinner class="helptext-spinner"></mat-spinner>
+        <div class="helptext">It might take several minutes to render suggestions.</div>
+      </div>
+    </div>
+  </div>
+  
+  <div *ngIf="!showSpinner">
+    <div *ngIf="!finished">
+      <div class="ruleoption">
+        <button mat-raised-button class="navi" (click)="gotoPrev()">Prev</button>
+        <span>Suggested Change {{currentPatch+1}}/{{patchNum}}</span>
+        <button mat-raised-button class="navi" (click)="gotoNext()">Next</button>
+      </div>
+
+      <!-- <div class="stat">
+        This change would disable <span class="stattimes">{{patches[currentPatch].TP}} incorrect {{patches[currentPatch].TP==1?"automation":"automations"}}</span> of 
+        "<span class="statevent">{{getCurrentCommandText()}}</span>" you recently reverted and 
+        <span class="stattimes">{{patches[currentPatch].FP}} other {{patches[currentPatch].FP==1?"one":"ones"}}</span> 
+         you didn't. 
+        (<span class="stattimes">{{patches[currentPatch].TP}}</span>/<span class="stattimes">{{patches[currentPatch].FP}}</span>)
+      </div> -->
+
+      <mat-list>
+        <!-- <mat-list-item class="rule-display" *ngFor="let rule of RULES; let i = index"> -->
+        <mat-list-item class="rule-display" *ngFor="let rule of RULES; let i = index">
+          <div class="rule-blocks">
+            <table class="rule-table">
+              <tr class="rule-table" *ngFor="let word of rule.words; let i = index" >
+                <ng-container *ngIf="rule.words[i]=='and'">
+                  <td class="rule-content rule-table"></td>
+                </ng-container>
+                <ng-container *ngIf="rule.words[i]!='and'">
+                  <td class="rule-word rule-table">
+                    {{rule.words[i] == "and" ? "" : rule.words[i]}}
+                  </td>
+                </ng-container>
+                <td class="rule-content rule-table">
+                  <ng-container *ngIf="rule.status==i && rule.status!=0">
+                    <div class="underneath" style="text-decoration: underline;">
+                      +{{rule.descriptions[i]}}
+                    </div>
+                  </ng-container>
+                  <ng-container *ngIf="!(rule.status==i && rule.status!=0)">
+                    {{rule.descriptions[i]}}
+                  </ng-container>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </mat-list-item>
+      </mat-list>
+    </div>
+
+    <div *ngIf="empty" class="ruleoption">
+      <span>You have not visited the debug page.</span>
+    </div>
+
+  </div>
+</div>
+

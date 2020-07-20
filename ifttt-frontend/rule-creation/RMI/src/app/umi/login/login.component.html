@@ -1,0 +1,73 @@
+<div class="wrapper">
+    <div class="welcome container">
+        <div class="row align-items-center">
+            <div class="col-sm-8">
+                <div class="intro">
+                    <h1>Super IFTTT</h1>
+                </div>
+                <div class="sub-intro">
+                    <h4>Controlling Your Devices More Easily</h4>
+                    <p>(Hopefully this statement is true.)</p>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <mat-card class="login">
+                    <mat-tab-group>
+                        <mat-tab label="Login" class="container">
+                            <form [formGroup]="loginForm">
+                                <div class="row">
+                                    <mat-form-field class="col-sm-12">
+                                        <input matInput formControlName="login_username" placeholder="Username" required>
+                                        <mat-error *ngIf="loginForm.hasError('required', 'login_username')">Username is required</mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="row">
+                                    <mat-form-field class="col-sm-12">
+                                        <input matInput formControlName="login_password" (keyup.enter)="login()" type="password" placeholder="Password" required>
+                                        <mat-error *ngIf="loginForm.hasError('required', 'login_password')">Password is required</mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <button mat-flat-button type="submit" [disabled]="!loginForm.valid" (click)="login()" class="primary-btn">Log In</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </mat-tab>
+                        <mat-tab label="Register" class="container">
+                            <form [formGroup]="registerForm">
+                                <div class="row">
+                                    <mat-form-field class="col-sm-12">
+                                        <input matInput formControlName="register_username" placeholder="Username" [errorStateMatcher]="username_error_matcher">
+                                        <mat-hint *ngIf="register_username.pending">Validating...</mat-hint>
+                                        <mat-error *ngIf="registerForm.hasError('uniqueUsername')">Username already exists</mat-error>
+                                        <mat-error *ngIf="registerForm.hasError('required', 'register_username')">Username is required</mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="row">
+                                    <mat-form-field class="col-sm-12">
+                                        <input matInput formControlName="register_password" type="password" placeholder="Password">
+                                        <mat-error *ngIf="registerForm.hasError('required', 'register_password')">Password is required</mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="row">
+                                    <mat-form-field class="col-sm-12">
+                                        <input matInput formControlName="register_confirm_password" (keyup.enter)="register()" type="password" placeholder="Confirm your password" [errorStateMatcher]="pwd_error_matcher">
+                                        <mat-error *ngIf="!registerForm.hasError('required', 'register_confirm_password') && registerForm.hasError('notMatch')">Passwords don't match</mat-error>
+                                        <mat-error *ngIf="registerForm.hasError('required', 'register_confirm_password')">Please confirm your password</mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <button mat-flat-button type="submit" [disabled]="!registerForm.valid" (click)="register()" class="primary-btn">Register</button>
+                                    </div>
+                                </div>
+                            </form>
+                            
+                        </mat-tab>
+                    </mat-tab-group>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>

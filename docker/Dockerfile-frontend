@@ -1,0 +1,44 @@
+FROM ubuntu:xenial
+
+USER root
+
+# Replace shell with bash so we can source files
+RUN rm /bin/sh && ln -s /bin/bash /bin/sh
+
+RUN apt update --fix-missing
+RUN apt update && apt install -y curl build-essential libssl-dev nginx nodejs
+RUN groupadd -g 1000 -r superifttt && useradd --no-log-init -r -u 1000 -g superifttt superifttt && mkhomedir_helper superifttt
+
+USER superifttt
+
+ENV NVM_DIR /home/superifttt/.nvm
+ENV NODE_VERSION 10.13.0
+
+# Install nvm with node and npm
+RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash &&\
+    source $NVM_DIR/nvm.sh &&\
+    nvm install $NODE_VERSION &&\
+    nvm alias default $NODE_VERSION &&\
+    nvm use default
+
+ENV NODE_PATH $NVM_DIR/versions/node/v$NODE_VERSION/lib/node_modules
+ENV PATH      $NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
+
+# install angular/cli golbally
+RUN npm install -g @angular/cli@6.1.0
+
+# create workdir
+RUN mkdir /home/superifttt/frontend
+
+# install dependencies
+COPY --chown=superifttt ./ifttt-frontend/rule-creation/RMI/ /home/superifttt/frontend/
+COPY --chown=superifttt ./nginx/nginx.conf.frontend /home/superifttt/nginx.conf
+RUN cd /home/superifttt/frontend && npm install
+
+# build frontend
+RUN cd /home/superifttt/frontend && ng build --prod
+
+WORKDIR /home/superifttt/
+
+USER root
+CMD [ "nginx", "-c", "/home/superifttt/nginx.conf" ]

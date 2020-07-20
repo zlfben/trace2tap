@@ -1,0 +1,135 @@
+<div class="outer">
+  <div class="nav">
+    <div class="back" (click)="goToDashboard()">←</div>
+    <mat-icon>assignment</mat-icon>
+    <div class="title">
+      <h1>Action: {{getCurrentCommandText()}}</h1>
+    </div>
+    <div class="newrule">
+    </div> 
+    <button mat-button class="currentrule" (click)="openDialog()">Show Current Rules</button>
+    <button mat-raised-button (click)="finishAdding()">Finish</button>
+  </div>
+
+  <div class="spincontainer" *ngIf="showSpinner">
+    <div class="row align-items-center justify-content-center h-100">
+      <div class="col-6">
+        <mat-spinner class="helptext-spinner"></mat-spinner>
+        <div class="helptext">It might take several minutes to render suggestions.</div>
+      </div>
+    </div>
+  </div>
+  
+  <div *ngIf="!showSpinner">
+    <div *ngIf="!finished">
+      <div class="ruleoption">
+        <button mat-raised-button class="navi" (click)="gotoPrev()">Prev</button>
+        <span>Suggested Rule {{currentCluster+1}}/{{clusterNum}}</span>
+        <button mat-raised-button class="navi" (click)="gotoNext()">Next</button>
+      </div>
+
+      <!-- <div class="stat">
+        This rule would automate <span class="stattimes">{{patchCluster[currentCluster][0].TP}} {{patchCluster[currentCluster][0].TP==1?"time":"times"}}</span> you recently 
+        <span class="statevent">{{getCurrentCommandText()}}</span> and 
+        <span class="stattimes">{{patchCluster[currentCluster][0].FP}} other {{patchCluster[currentCluster][0].FP==1?"time":"times"}}</span> 
+        when you didn't. 
+        (<span class="stattimes">{{patchCluster[currentCluster][0].TP}}</span>/<span class="stattimes">{{patchCluster[currentCluster][0].FP}}</span>)
+      </div> -->
+
+      <mat-list>
+        <mat-list-item class="rule-display">
+          <div class="rule-blocks">
+            <table class="rule-table">
+              <tr class="rule-table" *ngFor="let word of RULES[0].words; let i = index">
+                <td class="rule-word rule-table">{{RULES[0].words[i] == "and"? "" :RULES[0].words[i]}}</td>
+                <td class="rule-content rule-table">{{RULES[0].descriptions[i]}}</td>
+              </tr>
+            </table>
+          </div>
+          <div class="rule-manage">
+            <ng-container *ngIf="!ruleSavedFlags[currentCluster][0]">
+              <button mat-raised-button (click)="saveRuleFlag(currentCluster, 0)">Save</button>
+            </ng-container>
+            <ng-container *ngIf="ruleSavedFlags[currentCluster][0]">
+              <button mat-raised-button class="savedbutton" (click)="saveRuleFlag(currentCluster, 0)">Saved</button>
+            </ng-container>
+          </div>
+        </mat-list-item>
+        
+        
+
+        <div [hidden]="showAlternatives">
+          <button mat-button class="btn-show-alter" (click)="showOrHideAlt()">Show Similar Rules +</button>
+
+          <div [hidden]="logFetched">
+            <div class="row align-items-center justify-content-center h-100">
+              <div class="col-4">
+                <mat-spinner class="helptext-spinner"></mat-spinner>
+                <div class="helptext">Rendering visualization...</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="vis" [hidden]="!logFetched">
+            <div class="ruleoption">
+              <span>Stats and Visualization</span>
+            </div>
+            <template #viscontainer [hidden]="!logFetched"></template>
+          </div>
+        </div>
+
+        <div [hidden]="!showAlternatives">
+          <button mat-button class="btn-show-alter" (click)="showOrHideAlt()">Hide Similar Rules -</button>
+          <mat-list-item class="rule-display" *ngFor="let rule of RULES.slice(1); let i = index">
+            <div class="rule-blocks" [matTooltip]="getStat(i+1)" matTooltipPosition="before">
+              <table class="rule-table">
+                <tr class="rule-table" *ngFor="let word of rule.words; let i = index">
+                  <td class="rule-word rule-table">{{rule.words[i] == "and"? "" :rule.words[i]}}</td>
+                  <td class="rule-content rule-table">{{rule.descriptions[i]}}</td>
+                </tr>
+              </table>
+            </div>
+            <div class="rule-manage">
+              <ng-container *ngIf="!ruleSavedFlags[currentCluster][i+1]">
+                <button mat-raised-button (click)="saveRuleFlag(currentCluster, i+1)">Save</button>
+              </ng-container>
+              <ng-container *ngIf="ruleSavedFlags[currentCluster][i+1]">
+                <button mat-raised-button class="savedbutton" (click)="saveRuleFlag(currentCluster, i+1)">Saved</button>
+              </ng-container>
+            </div>
+          </mat-list-item>
+        </div>
+      </mat-list>
+
+    </div>
+    <div *ngIf="finished">
+      <p class="helptext">No additional TAP rules are found.</p>
+    </div>
+  </div>
+  
+  <!-- <div class="column right" *ngIf="!showSpinner">
+    <div class="ruleoption">
+      <span>Current Rules</span>
+    </div>
+    <mat-list>
+      <mat-list-item class="rule-display" *ngFor="let rule of SAVEDRULES; let i = index">
+        <div class="rule-blocks">
+          <div *ngFor="let word of rule.words; let i = index" class="rule-block">
+            <div class="rule-word">
+              {{rule.words[i]}}
+            </div>
+            <div class="rule-icon">
+              <mat-icon>{{rule.icons[i]}}</mat-icon>
+              <div class="underneath">
+                {{rule.descriptions[i]}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </mat-list-item>
+    </mat-list>
+  </div> -->
+      
+</div>
+
+<!-- <button (click)="openDialog()">Current Rules</button> -->

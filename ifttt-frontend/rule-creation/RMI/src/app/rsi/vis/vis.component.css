@@ -1,0 +1,158 @@
+table {
+  border-collapse: collapse;
+  border-spacing: 5px 10px;
+}
+
+thead th {
+  position: sticky;
+  top: 0px;
+  background-color: white;
+  padding-top: 20px;
+}
+
+tr { border: none; }
+
+td {
+  border-right: solid 5px #ffffff; 
+  border-left: solid 5px #ffffff;
+  text-align: center; 
+  vertical-align: middle;
+  height: 35px; 
+}
+
+.tablehead {
+  font-weight: bold;
+  font-size: 18px;
+  padding: 5px;
+}
+
+div.tabletime {
+  font-weight: bold;
+  color: darkgray;
+}
+
+div.tabletimebold {
+  font-weight: bolder;
+  color: dimgray;
+  font-size: large;
+}
+
+div.tabletimedate {
+  font-weight: bolder;
+  color: black;
+  font-size: large;
+}
+
+.vistitle {
+  text-align: right;
+  vertical-align: center;
+}
+
+.titlerow {
+  display: flex;
+}
+
+.column {
+  flex: 50%;
+  margin: auto;
+}
+
+.tab-dev-name {
+  margin-bottom: 5px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  height: 2.5em;
+  line-height: 1;
+}
+
+.tab-cap-name {
+  color: gray;
+  font-size: smaller;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  line-height: 1;
+}
+
+.tab-dev-pic {
+  border: none !important;
+  height: 75px; 
+}
+
+.centerdots {
+  text-align: center;
+  font-size: x-large;
+}
+
+td.target_column {
+  background-color: rgb(231, 252, 202);
+}
+
+td.related_column {
+  background-color: #ccebff;
+}
+
+td.other_column {
+  background-color: rgb(233, 249, 255);
+}
+
+td.init_target_column {
+  background-color: rgb(219, 255, 169);
+}
+
+td.init_related_column {
+  background-color: #a2daff;
+}
+
+td.init_other_column {
+  background-color: #ccebff;
+}
+
+.btn-show-alter {
+  background-color: whitesmoke;
+  /* color: rgb(0, 153, 255); */
+  border: none;
+  width: 100%;
+  text-align: left;
+  font-size: 18px;
+  margin-bottom: 0.5em;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+/* .showorhide {
+  float: right;
+} */
+
+.showorhideicon {
+  vertical-align: middle;
+}
+
+.stat {
+  border: none;
+  text-align: left;
+  width: 100%;
+  font-size: 20px;
+  margin-bottom: 0.5em;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+span.stattimes {
+  color: rgb(19, 167, 0);
+  font-weight: bold;
+}
+
+span.statevent {
+  color: rgb(0, 153, 255);
+  font-weight: bold;
+}
+
+button.help {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: rgb(0, 153, 255);
+  color: white;
+}
+
+template[hidden] { display: none; }

@@ -1,0 +1,88 @@
+<div id='vis'>
+  
+  <div class="stat">
+    <ng-container *ngIf="!mode">
+      You manually applied "<span class="statevent">{{currentCommandText}}</span>" 
+      for <span class="stattimes">{{PNRCount[currentCluster][2]}} {{PNRCount[currentCluster][2]==1?"time":"times"}}</span>.
+    </ng-container>
+    <ng-container *ngIf="mode">
+      You reverted the automation "<span class="statevent">{{currentCommandText}}</span>" for 
+      <span class="stattimes">{{PNRCount[currentCluster][2]}} {{PNRCount[currentCluster][2]==1?"time":"times"}}</span>.
+    </ng-container>
+  </div>
+  <button mat-button class="btn-show-alter" (click)="flipPositive()">
+    <ng-container *ngIf="!showPositive">
+      <mat-icon class="showorhideicon">expand_more</mat-icon>
+    </ng-container>
+    <ng-container *ngIf="showPositive">
+      <mat-icon class="showorhideicon">expand_less</mat-icon>
+    </ng-container>
+
+    <ng-container *ngIf="!mode">
+      The suggested rule would automate 
+      <span class="stattimes">{{PNRCount[currentCluster][0]}} {{PNRCount[currentCluster][0]==1?"time":"times"}}</span> 
+      out of them.
+    </ng-container>
+    <ng-container *ngIf="mode">
+      The change would cancel the automation 
+      <span class="stattimes">{{PNRCount[currentCluster][0]}} {{PNRCount[currentCluster][0]==1?"time":"times"}}</span> 
+      when you actually reverted them.
+    </ng-container>
+    <!-- <span class="showorhide">
+      Show
+    </span> -->
+  </button>
+
+  <template #vispositive></template>
+
+  <div class="stat">
+    <ng-container *ngIf="!mode">
+      In some cases when you didn't apply the action,
+    </ng-container>
+    <ng-container *ngIf="mode">
+      In some cases when you didn't revert the action,
+    </ng-container>
+  </div>
+
+  <button mat-button class="btn-show-alter" (click)="flipNegative()">
+    <ng-container *ngIf="!showNegative">
+      <mat-icon class="showorhideicon">expand_more</mat-icon>
+    </ng-container>
+    <ng-container *ngIf="showNegative">
+      <mat-icon class="showorhideicon">expand_less</mat-icon>
+    </ng-container>
+
+    <ng-container *ngIf="!mode">
+      the rule would also be triggered in 
+      <span class="stattimes">{{PNRCount[currentCluster][1]}} {{PNRCount[currentCluster][1]==1?"time":"times"}}</span>.
+    </ng-container>
+    <ng-container *ngIf="mode">
+      the change would also cancel 
+      <span class="stattimes">{{PNRCount[currentCluster][1]}} automated {{PNRCount[currentCluster][1]==1?"action":"actions"}}</span>.
+    </ng-container>
+  </button>
+
+  <!-- <ng-container *ngIf="!showNegative">
+    <button mat-button class="btn-show-alter" (click)="showNegative = !showNegative">
+      <ng-container *ngIf="!mode">
+        The rule would also automate 
+        <span class="stattimes">{{PNRCount[currentCluster][1]}} {{PNRCount[currentCluster][1]==1?"time":"times"}}</span> 
+        when you didn't apply the action. Show <mat-icon>expand_more</mat-icon>
+      </ng-container>
+      <ng-container *ngIf="mode">
+        The change would also discard 
+        <span class="stattimes">{{PNRCount[currentCluster][1]}} automated {{PNRCount[currentCluster][1]==1?"action":"actions"}}</span> 
+        you didn't revert. Show <mat-icon>expand_more</mat-icon>
+      </ng-container>
+    </button>
+  </ng-container>
+  <ng-container *ngIf="showNegative">
+    <button mat-button class="btn-show-alter" (click)="showNegative = !showNegative">Hide <mat-icon>expand_less</mat-icon></button>
+  </ng-container> -->
+
+  <template #visnegative></template>
+</div>
+
+<button mat-mini-fab class="help" (click)="openLegend()" *ngIf="showNegative || showPositive">
+  <mat-icon>help_outline</mat-icon>
+</button>

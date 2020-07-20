@@ -1,0 +1,191 @@
+<div class="nav">
+    <h1>Create Your Own SuperIFTTT app</h1>
+</div>
+
+<div class="container">
+    <mat-horizontal-stepper [linear]="true" #stepper="matHorizontalStepper">
+        <mat-step [stepControl]="preAppCreationForm">
+            <ng-template matStepLabel>SmartApp Created?</ng-template>
+            <form [formGroup]="preAppCreationForm">
+                <div class="row">
+                    <div class="col-12">
+                        <p>Has someone created an SmartApp for you?</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <input type="checkbox" formControlName="appCreated"> Yes, I have an SmartApp already.
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <button matStepperNext>Next</button>
+                    </div>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step [stepControl]="stSetupForm">
+            <ng-template matStepLabel>Setup Your SmartApp</ng-template>
+            <form [formGroup]="stSetupForm">
+                <div class="container form-group-container">
+                    <div *ngIf="!preAppCreationForm.value.appCreated">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <p>Before continue, please create your own SuperIFTTT app first.</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <p>1. Go to your <a href="https://smartthings.developer.samsung.com/workspace/" target="_blank">Samsung SmartThigns Workspace</a> to create your own automation. You can name the app as anything you want.</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <p>2. Click on "Register Automation SmartApp". When setup, please select "WebHook Endpoint" and use <span class="code">https://superifttt.cs.uchicago.edu/iotcore/st/apps/superifttt-{{username}}/callback/</span> as your Target Url.</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <p>3. When selecting permissions, please select everything except <span class="code">"w:devices:*"</span>.</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <p>4. Once you are done with registration, you should be given your <span class="code">client_id</span> and <span class="code">client_secret</span> for this SmartApp. If you didn't see one, please regenerate them. Please fill them in here. </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="preAppCreationForm.value.appCreated">
+                        Please enter your <span class="code">client_id</span> and the <span class="code">client_secret</span>
+                    </div>
+                    <div class="form-inputs">
+                        <div class="row">
+                            <mat-form-field class="col-sm-6">
+                                <input matInput formControlName="clientId" placeholder="Client ID" required>
+                                <mat-error *ngIf="stSetupForm.hasError('required', 'clientId')">Client ID is missing</mat-error>
+                                <mat-error *ngIf="stSetupForm.hasError('pattern', 'clientId')">Client ID's format is invalid</mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div class="row">
+                            <mat-form-field class="col-sm-6">
+                                <input matInput formControlName="clientSecret" placeholder="Client Secret" required>
+                                <mat-error *ngIf="stSetupForm.hasError('required', 'clientSecret')">Client Secret is missing</mat-error>
+                                <mat-error *ngIf="stSetupForm.hasError('pattern', 'clientSecret')">Client Secret's format is invalid</mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="row" *ngIf="!preAppCreationForm.value.appCreated">
+                        <div class="col-sm-12">
+                            <button [disabled]="!stSetupForm.valid" matStepperNext>Next</button>
+                        </div>
+                    </div>
+                    <div class="row" *ngIf="preAppCreationForm.value.appCreated">
+                        <div class="col-sm-12">
+                            <button [disabled]="!stSetupForm.valid" type="submit" (click)="stappRegister()" matStepperNext>Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step [stepControl]="appProfileForm" *ngIf="!preAppCreationForm.value.appCreated">
+            <ng-template matStepLabel>Customize Your SmartApp</ng-template>
+            <form [formGroup]="appProfileForm">
+                <div class="container form-group-container">
+                    <div class="row">
+                        <mat-form-field class="col-sm-6">
+                            <mat-label>App Name</mat-label>
+                            <input matInput formControlName="appName" placeholder="Enter the name of your app" required>
+                            <mat-error *ngIf="appProfileForm.hasError('required', 'appName')">App name cannot be missing</mat-error>
+                            <mat-error *ngIf="appProfileForm.hasError('pattern', 'appName')">App name should only contain English characters, numbers, spaces, havens and underscores</mat-error>
+                            <mat-error *ngIf="appProfileForm.hasError('maxLength', 'appName')">App name should not be longer than 128 characters</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="row">
+                        <mat-form-field class="col-sm-6">
+                            <mat-label>App Description (Optional)</mat-label>
+                            <textarea matInput formControlName="appDscr" placeholder="Using one or two sentences describe your app" rows="5"></textarea>
+                        </mat-form-field>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <button mat-flat-button type="submit" [disabled]="!appProfileForm.valid" (click)="stappRegister()" class="primary-btn" matStepperNext>Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step *ngIf="!preAppCreationForm.value.appCreated">
+            <ng-template matStepLabel>Install your app to your location</ng-template>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <p>{{appRegResultDscr}}</p>
+                    </div>
+                </div>
+                <div class="row" *ngIf="appRegSuccess">
+                    <div class="col-sm-12">
+                        <p>Now you could install the app you created in Step 1 on your own SmartThings app. To do that, please follow the instructions below.</p>
+                    </div>
+                </div>
+
+                <div class="row" *ngIf="appRegSuccess">
+                    <div class="col-sm-12">
+                        <mat-list>
+                            <mat-list-item>
+                                1. Launch the SmartThings app. Your SmartThings app and Developer Workspace must be signed into the same account.
+                            </mat-list-item>
+
+                            <mat-list-item>
+                                2. Enable Developer Mode in the SmartThings app.
+                            </mat-list-item>
+
+                            <mat-list-item style="margin-left: 40px;">
+                                1. Go to <b> Dashboard > Settings. </b>
+                            </mat-list-item>
+
+                            <mat-list-item style="margin-left: 40px;">
+                                2. Long-press About SmartThings for <b> 20 seconds</b>.
+                            </mat-list-item>
+
+                            <mat-list-item style="margin-left: 40px;">
+                                3. Enable the Developer Mode.
+                            </mat-list-item>
+
+                            <mat-list-item style="margin-left: 40px;">
+                                4. Restart the SmartThings app.
+                            </mat-list-item>
+
+                            <mat-list-item>
+                                3. Go to Automations tab and add your Automation app.
+                            </mat-list-item>
+
+                            <mat-list-item style="margin-left: 40px;">
+                                1. Go to the Automations tab and click <b> ADD AUTOMATION</b>. You can now see and install your Automations.
+                            </mat-list-item>
+
+                            <mat-list-item style="margin-left: 40px;">
+                                2. Tap on the Automation app to install it.
+                            </mat-list-item>
+
+                        </mat-list>
+                    </div>
+                </div>
+
+                <div class="row" *ngIf="appRegSuccess">
+                    <div class="col-sm-12">
+                        <button mat-flat-button (click)="getLocationsAndDevices()" class="primary-btn" matStepperNext>I have completed all the steps above</button>
+                    </div>
+                </div>
+            </div>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>{{appRegResult}}</ng-template>
+            
+            <div class="row" *ngIf="appRegSuccess">
+                <div class="col-sm-4">
+                    <button mat-flat-button class="primary-btn" (click)="goToDashboard()">Take Me to Dashboard</button>
+                </div>
+            </div>
+        </mat-step>
+    </mat-horizontal-stepper>
+</div>

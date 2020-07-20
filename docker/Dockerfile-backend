@@ -1,0 +1,68 @@
+FROM ubuntu:bionic
+
+USER root
+
+RUN apt update && apt install -y wget net-tools python3-dev g++ make unzip
+RUN groupadd -g 1000 -r iftttuser && useradd --no-log-init -r -u 1000 -g iftttuser iftttuser && mkhomedir_helper iftttuser
+
+# install spot model checker
+RUN cd /root && \
+    wget https://www.lrde.epita.fr/dload/spot/spot-2.7.5.tar.gz && \
+    tar -zxvf spot-2.7.5.tar.gz && \
+    cd /root/spot-2.7.5 && \
+    ./configure && \
+    make && make install && ldconfig && \
+    cp -rf /usr/local/lib/python3.6/site-packages/* /usr/local/lib/python3.6/dist-packages
+
+# RUN wget -q -O - https://www.lrde.epita.fr/repo/debian.gpg | apt-key add - &&\
+#     echo 'deb http://www.lrde.epita.fr/repo/debian/ stable/' >> /etc/apt/sources.list &&\
+#     apt update && apt install -y libbddx0=2.7.5.0-1 libspot0=2.7.5.0-1 libspotltsmin0=2.7.5.0-1 libspotgen0=2.7.5.0-1 libbddx-dev=2.7.5.0-1 libspot-dev=2.7.5.0-1 spot-doc=2.7.5.0-1 python3-spot=2.7.5.0-1 spot=2.7.5.0-1
+
+# install z3
+RUN cd /root && \
+    wget https://github.com/Z3Prover/z3/releases/download/Z3-4.8.5/z3-4.8.5-x64-ubuntu-16.04.zip && \
+    unzip z3-4.8.5-x64-ubuntu-16.04 && \
+    cd /root/z3-4.8.5-x64-ubuntu-16.04 && \
+    cp bin/*.so /usr/lib && \
+    cp bin/z3 /usr/bin && \
+    cp -r bin/python/z3/ /usr/lib/python3/dist-packages && \
+    cp include/* /usr/include
+
+# install qm package
+RUN cd /root && \
+    wget http://robertdick.org/python/qm-0.2.tar.gz && \
+    tar -zxvf qm-0.2.tar.gz &&\
+    cd /root/qm-0.2 && \
+    python3 setup.py install
+
+# install AutoTap
+ADD ./iot-autotap /root/AutoTap
+RUN apt update && apt install -y python3-pip
+RUN pip3 install sklearn graphviz kmodes webcolors
+RUN cd /root/AutoTap && \
+    pip3 install .
+
+# install django
+ADD ./iot-tap-backend/requirements.txt /home/iftttuser
+RUN apt update && apt install -y python3-pip
+RUN pip3 install -r /home/iftttuser/requirements.txt
+RUN apt update && apt install -y postgresql-client-10
+
+# set up scripts
+ADD ./scripts/init-backend.sh /home/iftttuser/
+RUN chown iftttuser /home/iftttuser/init-backend.sh
+RUN chmod +x /home/iftttuser/init-backend.sh
+ADD ./scripts/init-celery-beat.sh /home/iftttuser/
+RUN chown iftttuser /home/iftttuser/init-celery-beat.sh
+RUN chmod +x /home/iftttuser/init-celery-beat.sh
+ADD ./scripts/init-celery-worker.sh /home/iftttuser/
+RUN chown iftttuser /home/iftttuser/init-celery-worker.sh
+RUN chmod +x /home/iftttuser/init-celery-worker.sh
+
+USER iftttuser
+
+COPY --chown=iftttuser ./iot-tap-backend/ /home/iftttuser/
+RUN mkdir /home/iftttuser/iot-tap-backend/static
+
+WORKDIR /home/iftttuser/
+CMD ["sh", "-c", "./init-backend.sh"]

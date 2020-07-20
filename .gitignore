@@ -1,0 +1,17 @@
+### OSX ###
+.DS_Store
+
+### VirtualEnv ###
+venv/
+
+### VSCode ###
+.vscode/
+
+### certificates
+docker_certs/
+
+### secrets ###
+secrets/
+
+### EMACS ###
+*~

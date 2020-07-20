@@ -1,0 +1,39 @@
+<mat-sidenav-container>
+  <mat-sidenav #snav mode="push" [(opened)]="sideNavOpened" class="sidenav">
+    <div class="row">
+      <div class="col-sm-12">
+          <h2>Locations</h2>
+      </div>
+    </div>
+    <hr />
+    <ng-container *ngIf="locationFetched">
+      <mat-list>
+        <mat-list-item *ngFor="let loc of locations; let loc_i=index" class="location-list-item">
+          <button mat-button (click)="changeLoc(loc_i)" class="btn w-100 text-left">{{loc.name}}</button>
+        </mat-list-item>
+      </mat-list>
+    </ng-container>
+    <div class="row">
+      <div class="col-sm-12">
+          <hr>
+          <button mat-button id="logout" (click)="logout()" class="btn">Logout</button>
+      </div>
+    </div>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <div class="nav">
+      <button mat-icon-button (click)="snav.toggle()" id="snav-btn"><mat-icon>menu</mat-icon></button>
+      <ng-container *ngIf="locationFetched">
+        <h1>{{locations[currentLocation].name}}</h1>
+      </ng-container>
+    </div>
+    
+    <button mat-raised-button (click)="gotoRevert()" class='addnew'>Show revert actions</button>
+    <button mat-raised-button (click)="gotoDebug()" class='addnew'>Show AutoTrace's debug pages</button>
+    <button mat-raised-button (click)="gotoManual()" class='addnew'>Show rule modifications</button>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+
+

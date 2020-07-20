@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Synthesize</title>
+</head>
+<body>
+    Please select the location you want to analyze
+    <form action="/backend/autotap/revert/" method="post">
+        <select name="location" size="30">
+            {% for loc in location_name_list %}
+                <option value="{{ loc }}">{{ loc }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <input type="submit" name="action" value="Choose Location">
+    </form>
+</body>
+</html>

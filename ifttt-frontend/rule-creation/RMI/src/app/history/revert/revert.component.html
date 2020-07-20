@@ -1,0 +1,42 @@
+<div class="nav">
+  <div class="back" (click)="goToDashboard()">←</div>
+  <h1>Select An Action</h1>
+</div>
+<div class="container">
+  <div class="row align-items-center justify-content-center h-100" *ngIf="showSpinner">
+      <div class="col-3">
+          <mat-spinner></mat-spinner>
+      </div>
+  </div>
+  <div *ngIf="!showSpinner">
+    <div *ngFor="let device of devices">
+      <div *ngIf="device.commands.length > 0">
+        <h2>{{device.label}}</h2>
+        <div *ngFor="let capability_parameter of getDeviceCommandCapabilities(device)">
+          <h4>{{getDefaultTextForCapability(capability_parameter[0], capability_parameter[1])}}</h4>
+          <div class="row">
+            <ng-container *ngFor="let command of getCommandFromCapability(device, capability_parameter[0])">
+              <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6" *ngIf="command.reverted>0">
+                <ng-container>
+                  <mat-card (click)="goToRevertBase(device, command)">
+                    <mat-card-title>
+                      <ng-container *ngIf="command.parameter.type=='color'">
+                        <div class="dot" [ngStyle]="{'background-color': command.value}"></div>
+                      </ng-container>
+                      {{command.value}}
+                    </mat-card-title>
+                    <ng-container>
+                      {{command.reverted}} automations reverted.
+                    </ng-container>
+                  </mat-card>
+                </ng-container>
+              </div>
+            </ng-container>
+            
+          </div>
+        </div>
+        <br>
+      </div>
+    </div>
+  </div>
+</div>

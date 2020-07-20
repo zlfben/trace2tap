@@ -1,0 +1,17 @@
+daemon off;
+
+events { }
+
+http {
+    
+    server {
+        listen 4200;
+
+        location / {
+            include /etc/nginx/mime.types;
+            root /home/superifttt/frontend/dist;
+            index index.html;
+            try_files $uri $uri/ /index.html;
+        }
+    }
+}

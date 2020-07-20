@@ -1,0 +1,15 @@
+{
+    "db_username": "iftttuser",
+    "db_password": "password",
+    "iotcore_admin_name": "admin",
+    "iotcore_admin_email": "example@email.com",
+    "iotcore_admin_password": "password",
+    "backend_admin_name": "admin",
+    "backend_admin_email": "example@email.com",
+    "backend_admin_password": "password",
+    "iotcore_django_secret": "secret",
+    "backend_django_secret": "secret2",
+    "client_id": "client_id",
+    "client_secret": "client_secret",
+    "host_domain": "localhost"
+}

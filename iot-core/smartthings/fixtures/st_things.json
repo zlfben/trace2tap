@@ -1,0 +1,1179 @@
+[
+{
+    "model": "smartthings.attribute",
+    "pk": 1,
+    "fields": {
+        "capability": 1,
+        "name": "acceleration",
+        "data_type": "ENUM",
+        "required": true,
+        "value": null
+    }
+},
+{
+    "model": "smartthings.attribute",
+    "pk": 2,
+    "fields": {
+        "capability": 2,
+        "name": "airQuality",
+        "data_type": "NUMBER",
+        "required": true,
+        "value": null
+    }
+},
+{
+    "model": "smartthings.attribute",
+    "pk": 3,
+    "fields": {
+        "capability": 3,
+        "name": "volume",
+        "data_type": "NUMBER",
+        "required": true,
+        "value": null
+    }
+},
+{
+    "model": "smartthings.attribute",
+    "pk": 4,
+    "fields": {
+        "capability": 4,
+        "name": "button",
+        "data_type": "ENUM",
+        "required": true,
+        "value": null
+    }
+},
+{
+    "model": "smartthings.attribute",
+    "pk": 5,
+    "fields": {
+        "capability": 4,
+        "name": "numberOfButtons",
+        "data_type": "NUMBER",
+        "required": true,
+        "value": null
+    }
+},
+{
+    "model": "smartthings.attribute",
+    "pk": 6,
+    "fields": {
+        "capability": 4,
+        "name": "supportedButtonValues",
+        "data_type": "JSON_OBJECT",
+        "required": true,
+        "value": null
+    }
+},
+{
+    "model": "smartthings.attribute",
+    "pk": 7,
+    "fields": {
+        "capability": 5,
+        "name": "color",
+        "data_type": "STRING",
+        "required": true,
+        "value": null
+    }
+},
+{
+    "model": "smartthings.attribute",
+    "pk": 8,
+    "fields": {
+        "capability": 5,
+        "name": "hue",
+        "data_type": "NUMBER",
+        "required": true,
+        "value": null
+    }
+},
+{
+    "model": "smartthings.attribute",
+    "pk": 9,
+    "fields": {
+        "capability": 5,
+        "name": "saturation",
+        "data_type": "NUMBER",
+        "required": true,
+        "value": null
+    }
+},
+{
+    "model": "smartthings.attribute",
+    "pk": 10,
+    "fields": {
+        "capability": 6,
+        "name": "contact",
+        "data_type": "ENUM",
+        "required": true,
+        "value": null
+    }
+},
+{
+    "model": "smartthings.attribute",
+    "pk": 11,
+    "fields": {
+        "capability": 7,
+        "name": "machineState",
+        "data_type": "ENUM",
+        "required": true,
+        "value": null
+    }
+},
+{
+    "model": "smartthings.attribute",
+    "pk": 12,
+    "fields": {
+        "capability": 7,
+        "name": "supportedMachineStates",
+        "data_type": "JSON_OBJECT",
+        "required": true,
+        "value": null
+    }
+},
+{
+    "model": "smartthings.attribute",
+    "pk": 13,
+    "fields": {
+        "capability": 7,
+        "name": "dishwasherJobState",
+        "data_type": "ENUM",
+        "required": true,
+        "value": null
+    }
+},
+{
+    "model": "smartthings.attribute",
+    "pk": 14,
+    "fields": {
+        "capability": 7,
+        "name": "completionTime",
+        "data_type": "DATE",
+        "required": true,
+        "value": null
+    }
+},
+{
+    "model": "smartthings.attribute",
+    "pk": 15,
+    "fields": {
+        "capability": 8,
+        "name": "dryerMode",
+        "data_type": "ENUM",
+        "required": true,
+        "value": null
+    }
+},
+{
+    "model": "smartthings.attribute",
+    "pk": 16,
+    "fields": {
+        "capability": 9,
+        "name": "fineDustLevel",
+        "data_type": "NUMBER",
+        "required": true,
+        "value": null
+    }
+},
+{
+    "model": "smartthings.attribute",
+    "pk": 17,
+    "fields": {
+        "capability": 9,
+        "name": "dustLevel",
+        "data_type": "NUMBER",
+        "required": true,
+        "value": null
+    }
+},
+{
+    "model": "smartthings.attribute",
+    "pk": 18,
+    "fields": {
+        "capability": 10,
+        "name": "fanSpeed",
+        "data_type": "NUMBER",
+        "required": true,
+        "value": null
+    }
+},
+{
+    "model": "smartthings.attribute",
+    "pk": 19,
+    "fields": {
+        "capability": 11,
+        "name": "illuminance",
+        "data_type": "NUMBER",
+        "required": true,
+        "value": null
+    }
+},
+{
+    "model": "smartthings.attribute",
+    "pk": 20,
+    "fields": {
+        "capability": 12,
+        "name": "inputSource",
+        "data_type": "ENUM",
+        "required": true,
+        "value": null
+    }
+},
+{
+    "model": "smartthings.attribute",
+    "pk": 21,
+    "fields": {
+        "capability": 12,
+        "name": "supportedInputSources",
+        "data_type": "JSON_OBJECT",
+        "required": true,
+        "value": null
+    }
+},
+{
+    "model": "smartthings.attribute",
+    "pk": 22,
+    "fields": {
+        "capability": 13,
+        "name": "playbackShuffle",
+        "data_type": "ENUM",
+        "required": true,
+        "value": null
+    }
+},
+{
+    "model": "smartthings.attribute",
+    "pk": 23,
+    "fields": {
+        "capability": 14,
+        "name": "disabledTrackControlCommands",
+        "data_type": "JSON_OBJECT",
+        "required": true,
+        "value": null
+    }
+},
+{
+    "model": "smartthings.attribute",
+    "pk": 24,
+    "fields": {
+        "capability": 15,
+        "name": "odorLevel",
+        "data_type": "NUMBER",
+        "required": true,
+        "value": null
+    }
+},
+{
+    "model": "smartthings.attribute",
+    "pk": 25,
+    "fields": {
+        "capability": 16,
+        "name": "machineState",
+        "data_type": "ENUM",
+        "required": true,
+        "value": null
+    }
+},
+{
+    "model": "smartthings.attribute",
+    "pk": 26,
+    "fields": {
+        "capability": 16,
+        "name": "supportedMachineStates",
+        "data_type": "JSON_OBJECT",
+        "required": true,
+        "value": null
+    }
+},
+{
+    "model": "smartthings.attribute",
+    "pk": 27,
+    "fields": {
+        "capability": 16,
+        "name": "ovenJobState",
+        "data_type": "ENUM",
+        "required": true,
+        "value": null
+    }
+},
+{
+    "model": "smartthings.attribute",
+    "pk": 28,
+    "fields": {
+        "capability": 16,
+        "name": "completionTime",
+        "data_type": "DATE",
+        "required": true,
+        "value": null
+    }
+},
+{
+    "model": "smartthings.attribute",
+    "pk": 29,
+    "fields": {
+        "capability": 16,
+        "name": "operationTime",
+        "data_type": "NUMBER",
+        "required": true,
+        "value": null
+    }
+},
+{
+    "model": "smartthings.attribute",
+    "pk": 30,
+    "fields": {
+        "capability": 16,
+        "name": "progress",
+        "data_type": "NUMBER",
+        "required": true,
+        "value": null
+    }
+},
+{
+    "model": "smartthings.attribute",
+    "pk": 31,
+    "fields": {
+        "capability": 17,
+        "name": "power",
+        "data_type": "NUMBER",
+        "required": true,
+        "value": null
+    }
+},
+{
+    "model": "smartthings.attribute",
+    "pk": 32,
+    "fields": {
+        "capability": 18,
+        "name": "presence",
+        "data_type": "ENUM",
+        "required": true,
+        "value": null
+    }
+},
+{
+    "model": "smartthings.attribute",
+    "pk": 33,
+    "fields": {
+        "capability": 19,
+        "name": "refrigerationSetpoint",
+        "data_type": "NUMBER",
+        "required": true,
+        "value": null
+    }
+},
+{
+    "model": "smartthings.attribute",
+    "pk": 34,
+    "fields": {
+        "capability": 20,
+        "name": "robotCleanerCleaningMode",
+        "data_type": "ENUM",
+        "required": true,
+        "value": null
+    }
+},
+{
+    "model": "smartthings.attribute",
+    "pk": 35,
+    "fields": {
+        "capability": 21,
+        "name": "robotCleanerTurboMode",
+        "data_type": "ENUM",
+        "required": true,
+        "value": null
+    }
+},
+{
+    "model": "smartthings.attribute",
+    "pk": 36,
+    "fields": {
+        "capability": 22,
+        "name": "smoke",
+        "data_type": "ENUM",
+        "required": true,
+        "value": null
+    }
+},
+{
+    "model": "smartthings.attribute",
+    "pk": 37,
+    "fields": {
+        "capability": 23,
+        "name": "level",
+        "data_type": "NUMBER",
+        "required": true,
+        "value": null
+    }
+},
+{
+    "model": "smartthings.attribute",
+    "pk": 38,
+    "fields": {
+        "capability": 24,
+        "name": "temperature",
+        "data_type": "NUMBER",
+        "required": true,
+        "value": null
+    }
+},
+{
+    "model": "smartthings.attribute",
+    "pk": 39,
+    "fields": {
+        "capability": 25,
+        "name": "thermostatFanMode",
+        "data_type": "ENUM",
+        "required": true,
+        "value": null
+    }
+},
+{
+    "model": "smartthings.attribute",
+    "pk": 40,
+    "fields": {
+        "capability": 25,
+        "name": "supportedThermostatFanModes",
+        "data_type": "JSON_OBJECT",
+        "required": true,
+        "value": null
+    }
+},
+{
+    "model": "smartthings.attribute",
+    "pk": 41,
+    "fields": {
+        "capability": 26,
+        "name": "thermostatMode",
+        "data_type": "ENUM",
+        "required": true,
+        "value": null
+    }
+},
+{
+    "model": "smartthings.attribute",
+    "pk": 42,
+    "fields": {
+        "capability": 26,
+        "name": "supportedThermostatModes",
+        "data_type": "JSON_OBJECT",
+        "required": true,
+        "value": null
+    }
+},
+{
+    "model": "smartthings.attribute",
+    "pk": 43,
+    "fields": {
+        "capability": 27,
+        "name": "thermostatSetpoint",
+        "data_type": "NUMBER",
+        "required": true,
+        "value": null
+    }
+},
+{
+    "model": "smartthings.attribute",
+    "pk": 44,
+    "fields": {
+        "capability": 28,
+        "name": "tvChannel",
+        "data_type": "STRING",
+        "required": true,
+        "value": null
+    }
+},
+{
+    "model": "smartthings.attribute",
+    "pk": 45,
+    "fields": {
+        "capability": 29,
+        "name": "washerMode",
+        "data_type": "ENUM",
+        "required": true,
+        "value": null
+    }
+},
+{
+    "model": "smartthings.attribute",
+    "pk": 46,
+    "fields": {
+        "capability": 30,
+        "name": "water",
+        "data_type": "ENUM",
+        "required": true,
+        "value": null
+    }
+},
+{
+    "model": "smartthings.command",
+    "pk": 1,
+    "fields": {
+        "capability": 3,
+        "name": "setVolume"
+    }
+},
+{
+    "model": "smartthings.command",
+    "pk": 2,
+    "fields": {
+        "capability": 3,
+        "name": "volumeUp"
+    }
+},
+{
+    "model": "smartthings.command",
+    "pk": 3,
+    "fields": {
+        "capability": 3,
+        "name": "volumeDown"
+    }
+},
+{
+    "model": "smartthings.command",
+    "pk": 4,
+    "fields": {
+        "capability": 5,
+        "name": "setColor"
+    }
+},
+{
+    "model": "smartthings.command",
+    "pk": 5,
+    "fields": {
+        "capability": 5,
+        "name": "setHue"
+    }
+},
+{
+    "model": "smartthings.command",
+    "pk": 6,
+    "fields": {
+        "capability": 5,
+        "name": "setSaturation"
+    }
+},
+{
+    "model": "smartthings.command",
+    "pk": 7,
+    "fields": {
+        "capability": 7,
+        "name": "setMachineState"
+    }
+},
+{
+    "model": "smartthings.command",
+    "pk": 8,
+    "fields": {
+        "capability": 8,
+        "name": "setDryerMode"
+    }
+},
+{
+    "model": "smartthings.command",
+    "pk": 9,
+    "fields": {
+        "capability": 10,
+        "name": "setFanSpeed"
+    }
+},
+{
+    "model": "smartthings.command",
+    "pk": 10,
+    "fields": {
+        "capability": 12,
+        "name": "setInputSource"
+    }
+},
+{
+    "model": "smartthings.command",
+    "pk": 11,
+    "fields": {
+        "capability": 13,
+        "name": "setPlaybackShuffle"
+    }
+},
+{
+    "model": "smartthings.command",
+    "pk": 12,
+    "fields": {
+        "capability": 14,
+        "name": "nextTrack"
+    }
+},
+{
+    "model": "smartthings.command",
+    "pk": 13,
+    "fields": {
+        "capability": 14,
+        "name": "previousTrack"
+    }
+},
+{
+    "model": "smartthings.command",
+    "pk": 14,
+    "fields": {
+        "capability": 16,
+        "name": "setMachineState"
+    }
+},
+{
+    "model": "smartthings.command",
+    "pk": 15,
+    "fields": {
+        "capability": 16,
+        "name": "stop"
+    }
+},
+{
+    "model": "smartthings.command",
+    "pk": 16,
+    "fields": {
+        "capability": 19,
+        "name": "setRefrigerationSetpoint"
+    }
+},
+{
+    "model": "smartthings.command",
+    "pk": 17,
+    "fields": {
+        "capability": 20,
+        "name": "setRobotCleanerCleaningMode"
+    }
+},
+{
+    "model": "smartthings.command",
+    "pk": 18,
+    "fields": {
+        "capability": 21,
+        "name": "setRobotCleanerTurboMode"
+    }
+},
+{
+    "model": "smartthings.command",
+    "pk": 19,
+    "fields": {
+        "capability": 23,
+        "name": "setLevel"
+    }
+},
+{
+    "model": "smartthings.command",
+    "pk": 20,
+    "fields": {
+        "capability": 25,
+        "name": "fanAuto"
+    }
+},
+{
+    "model": "smartthings.command",
+    "pk": 21,
+    "fields": {
+        "capability": 25,
+        "name": "fanCirculate"
+    }
+},
+{
+    "model": "smartthings.command",
+    "pk": 22,
+    "fields": {
+        "capability": 25,
+        "name": "fanOn"
+    }
+},
+{
+    "model": "smartthings.command",
+    "pk": 23,
+    "fields": {
+        "capability": 25,
+        "name": "setThermostatFanMode"
+    }
+},
+{
+    "model": "smartthings.command",
+    "pk": 24,
+    "fields": {
+        "capability": 26,
+        "name": "auto"
+    }
+},
+{
+    "model": "smartthings.command",
+    "pk": 25,
+    "fields": {
+        "capability": 26,
+        "name": "cool"
+    }
+},
+{
+    "model": "smartthings.command",
+    "pk": 26,
+    "fields": {
+        "capability": 26,
+        "name": "emergencyHeat"
+    }
+},
+{
+    "model": "smartthings.command",
+    "pk": 27,
+    "fields": {
+        "capability": 26,
+        "name": "heat"
+    }
+},
+{
+    "model": "smartthings.command",
+    "pk": 28,
+    "fields": {
+        "capability": 26,
+        "name": "off"
+    }
+},
+{
+    "model": "smartthings.command",
+    "pk": 29,
+    "fields": {
+        "capability": 26,
+        "name": "setThermostatMode"
+    }
+},
+{
+    "model": "smartthings.command",
+    "pk": 30,
+    "fields": {
+        "capability": 28,
+        "name": "setTvChannel"
+    }
+},
+{
+    "model": "smartthings.command",
+    "pk": 31,
+    "fields": {
+        "capability": 28,
+        "name": "channelUp"
+    }
+},
+{
+    "model": "smartthings.command",
+    "pk": 32,
+    "fields": {
+        "capability": 28,
+        "name": "channelDown"
+    }
+},
+{
+    "model": "smartthings.command",
+    "pk": 33,
+    "fields": {
+        "capability": 29,
+        "name": "setWasherMode"
+    }
+},
+{
+    "model": "smartthings.argument",
+    "pk": 1,
+    "fields": {
+        "command": 1,
+        "name": "volume",
+        "data_type": "NUMBER",
+        "required": true
+    }
+},
+{
+    "model": "smartthings.argument",
+    "pk": 2,
+    "fields": {
+        "command": 4,
+        "name": "color",
+        "data_type": "COLOR_MAP",
+        "required": true
+    }
+},
+{
+    "model": "smartthings.argument",
+    "pk": 3,
+    "fields": {
+        "command": 5,
+        "name": "hue",
+        "data_type": "NUMBER",
+        "required": true
+    }
+},
+{
+    "model": "smartthings.argument",
+    "pk": 4,
+    "fields": {
+        "command": 6,
+        "name": "saturation",
+        "data_type": "NUMBER",
+        "required": true
+    }
+},
+{
+    "model": "smartthings.argument",
+    "pk": 5,
+    "fields": {
+        "command": 7,
+        "name": "state",
+        "data_type": "ENUM",
+        "required": true
+    }
+},
+{
+    "model": "smartthings.argument",
+    "pk": 6,
+    "fields": {
+        "command": 8,
+        "name": "mode",
+        "data_type": "ENUM",
+        "required": true
+    }
+},
+{
+    "model": "smartthings.argument",
+    "pk": 7,
+    "fields": {
+        "command": 9,
+        "name": "speed",
+        "data_type": "NUMBER",
+        "required": true
+    }
+},
+{
+    "model": "smartthings.argument",
+    "pk": 8,
+    "fields": {
+        "command": 10,
+        "name": "mode",
+        "data_type": "ENUM",
+        "required": true
+    }
+},
+{
+    "model": "smartthings.argument",
+    "pk": 9,
+    "fields": {
+        "command": 11,
+        "name": "shuffle",
+        "data_type": "ENUM",
+        "required": true
+    }
+},
+{
+    "model": "smartthings.argument",
+    "pk": 10,
+    "fields": {
+        "command": 14,
+        "name": "state",
+        "data_type": "ENUM",
+        "required": true
+    }
+},
+{
+    "model": "smartthings.argument",
+    "pk": 11,
+    "fields": {
+        "command": 16,
+        "name": "setpoint",
+        "data_type": "NUMBER",
+        "required": true
+    }
+},
+{
+    "model": "smartthings.argument",
+    "pk": 12,
+    "fields": {
+        "command": 17,
+        "name": "mode",
+        "data_type": "ENUM",
+        "required": true
+    }
+},
+{
+    "model": "smartthings.argument",
+    "pk": 13,
+    "fields": {
+        "command": 18,
+        "name": "mode",
+        "data_type": "ENUM",
+        "required": true
+    }
+},
+{
+    "model": "smartthings.argument",
+    "pk": 14,
+    "fields": {
+        "command": 19,
+        "name": "level",
+        "data_type": "NUMBER",
+        "required": true
+    }
+},
+{
+    "model": "smartthings.argument",
+    "pk": 15,
+    "fields": {
+        "command": 19,
+        "name": "rate",
+        "data_type": "NUMBER",
+        "required": false
+    }
+},
+{
+    "model": "smartthings.argument",
+    "pk": 16,
+    "fields": {
+        "command": 23,
+        "name": "mode",
+        "data_type": "ENUM",
+        "required": true
+    }
+},
+{
+    "model": "smartthings.argument",
+    "pk": 17,
+    "fields": {
+        "command": 29,
+        "name": "mode",
+        "data_type": "ENUM",
+        "required": true
+    }
+},
+{
+    "model": "smartthings.argument",
+    "pk": 18,
+    "fields": {
+        "command": 30,
+        "name": "channel",
+        "data_type": "STRING",
+        "required": true
+    }
+},
+{
+    "model": "smartthings.argument",
+    "pk": 19,
+    "fields": {
+        "command": 33,
+        "name": "mode",
+        "data_type": "ENUM",
+        "required": true
+    }
+},
+{
+    "model": "smartthings.stapppermission",
+    "pk": 1,
+    "fields": {
+        "scope": "r:installedapps:*"
+    }
+},
+{
+    "model": "smartthings.stapppermission",
+    "pk": 2,
+    "fields": {
+        "scope": "l:installedapps"
+    }
+},
+{
+    "model": "smartthings.stapppermission",
+    "pk": 3,
+    "fields": {
+        "scope": "w:installedapps:*"
+    }
+},
+{
+    "model": "smartthings.stapppermission",
+    "pk": 4,
+    "fields": {
+        "scope": "r:apps:*"
+    }
+},
+{
+    "model": "smartthings.stapppermission",
+    "pk": 5,
+    "fields": {
+        "scope": "w:apps:*"
+    }
+},
+{
+    "model": "smartthings.stapppermission",
+    "pk": 6,
+    "fields": {
+        "scope": "l:devices"
+    }
+},
+{
+    "model": "smartthings.stapppermission",
+    "pk": 7,
+    "fields": {
+        "scope": "r:devices:*"
+    }
+},
+{
+    "model": "smartthings.stapppermission",
+    "pk": 8,
+    "fields": {
+        "scope": "w:devices:*"
+    }
+},
+{
+    "model": "smartthings.stapppermission",
+    "pk": 9,
+    "fields": {
+        "scope": "x:devices:*"
+    }
+},
+{
+    "model": "smartthings.stapppermission",
+    "pk": 10,
+    "fields": {
+        "scope": "r:deviceprofiles"
+    }
+},
+{
+    "model": "smartthings.stapppermission",
+    "pk": 11,
+    "fields": {
+        "scope": "w:deviceprofiles"
+    }
+},
+{
+    "model": "smartthings.stapppermission",
+    "pk": 12,
+    "fields": {
+        "scope": "i:deviceprofiles"
+    }
+},
+{
+    "model": "smartthings.stapppermission",
+    "pk": 13,
+    "fields": {
+        "scope": "l:scenes"
+    }
+},
+{
+    "model": "smartthings.stapppermission",
+    "pk": 14,
+    "fields": {
+        "scope": "x:scenes:*"
+    }
+},
+{
+    "model": "smartthings.stapppermission",
+    "pk": 15,
+    "fields": {
+        "scope": "r:schedules"
+    }
+},
+{
+    "model": "smartthings.stapppermission",
+    "pk": 16,
+    "fields": {
+        "scope": "w:schedules"
+    }
+},
+{
+    "model": "smartthings.stapppermission",
+    "pk": 17,
+    "fields": {
+        "scope": "l:locations"
+    }
+},
+{
+    "model": "smartthings.stapppermission",
+    "pk": 18,
+    "fields": {
+        "scope": "r:locations:*"
+    }
+},
+{
+    "model": "smartthings.stapppermission",
+    "pk": 19,
+    "fields": {
+        "scope": "w:locations:*"
+    }
+},
+{
+    "model": "smartthings.stapp",
+    "pk": 1,
+    "fields": {
+        "name": "superifttt",
+        "app_id": "ifttt",
+        "description": "For accurately conveying user intention to IoT devices",
+        "permissions": [],
+        "client_id": "something_like_an_id",
+        "client_secret": "something_else_like_a_secret"
+    }
+},
+{
+    "model": "smartthings.stappconfpage",
+    "pk": 1,
+    "fields": {
+        "st_app": 1,
+        "pageId": "Page0",
+        "name": "superifttt_page",
+        "nextPageId": "Page1",
+        "previousPageId": "Page-1",
+        "complete": false
+    }
+},
+{
+    "model": "smartthings.stappconfsection",
+    "pk": 1,
+    "fields": {
+        "page": 1,
+        "st_app_id": "",
+        "name": "2018_symposium_for_superifttt_scholars"
+    }
+},
+{
+    "model": "smartthings.stappconfsectionsetting",
+    "pk": 1,
+    "fields": {
+        "section": 1,
+        "st_app_id": "",
+        "setting_id": "set_me_freeeeeee",
+        "name": "2018_symposium_for_superifttt_scholars_super_section_settings",
+        "description": "The super section of the 2018 Symposium for SuperIFTTT scholars; IFTTT section coming soon.",
+        "setting_type": "made-up",
+        "required": false,
+        "multiple": false,
+        "capabilities": [
+            5
+        ],
+        "permissions": [
+            3
+        ]
+    }
+},
+{
+    "model": "smartthings.stappinstance",
+    "pk": 3,
+    "fields": {
+        "st_app": 1,
+        "st_installed_app_id": "superifttt_id",
+        "location_id": "where_o_where_am_I",
+        "refresh_token": "I_am_a_refresh_token.Hear_me_moo"
+    }
+},
+{
+    "model": "smartthings.device",
+    "pk": 2,
+    "fields": {
+        "st_device_id": "LetThereBeLight_plz",
+        "proj_device_id": 4,
+        "capabilities": [
+            4,
+            11
+        ]
+    }
+},
+{
+    "model": "smartthings.stappinstancesetting",
+    "pk": 1,
+    "fields": {
+        "setting": 1,
+        "device": 2,
+        "st_app_instance": 3
+    }
+}
+]

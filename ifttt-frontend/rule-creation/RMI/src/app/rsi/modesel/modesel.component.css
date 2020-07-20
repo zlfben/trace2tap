@@ -1,0 +1,23 @@
+mat-list-item {
+    height: 120px !important;
+}
+
+mat-line {
+    height: auto !important;
+}
+
+.t1 {
+    line-height: 50px !important;
+    font-size: 32px !important;
+}
+
+.t2 {
+    line-height: 35px !important;
+    font-size: 20px !important;
+}
+
+.inactive {
+    /* background-color: lightgray; */
+    color: lightgray;
+    cursor: not-allowed !important;
+}

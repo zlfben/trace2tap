@@ -1,0 +1,12 @@
+.legend {
+    /* text-align: center; */
+}
+
+.legend img {
+    /* width: 70%; */
+    /* border-width: thick;
+    border-style: solid;
+    border-color: darkgray; */
+    height: 300px;
+    width: auto;
+}

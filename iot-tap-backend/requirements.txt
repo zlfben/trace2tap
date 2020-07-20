@@ -1,0 +1,10 @@
+Django==2.2
+pytz==2018.3
+psycopg2-binary==2.7.5
+django-cors-headers==2.4.0
+requests==2.22.0
+django-oauth-toolkit==1.2.0
+celery==4.3.0
+redis
+django-celery-beat
+

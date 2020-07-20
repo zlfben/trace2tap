@@ -1,0 +1,10 @@
+<mat-list-item class="rule-display" *ngFor="let rule of RULES; let i = index">
+  <div class="rule-blocks">
+    <table class="rule-table">
+      <tr class="rule-table" *ngFor="let word of rule.words; let i = index">
+        <td class="rule-word rule-table">{{rule.words[i] == "and"? "" :rule.words[i]}}</td>
+        <td class="rule-content rule-table">{{rule.descriptions[i]}}</td>
+      </tr>
+    </table>
+  </div>
+</mat-list-item>

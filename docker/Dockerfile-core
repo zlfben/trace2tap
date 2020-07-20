@@ -1,0 +1,26 @@
+FROM ubuntu:xenial
+
+RUN groupadd -g 1000 -r iotcore && useradd --no-log-init -r -u 1000 -g iotcore iotcore && mkhomedir_helper iotcore
+
+# install django
+COPY ./iot-core/requirements.txt /home/iotcore
+RUN apt update && apt install -y python3-pip
+RUN pip3 install -r /home/iotcore/requirements.txt
+RUN apt update && apt install -y postgresql-client-9.5
+
+# set up database settings
+#RUN cd /home/iotcore/ &&\
+#    python3 manage.py initadmin &&\
+#    python3 manage.py migrate --no-input
+
+ADD ./scripts/init-core.sh /home/iotcore
+RUN chown iotcore /home/iotcore/init-core.sh
+RUN chmod +x /home/iotcore/init-core.sh
+
+USER iotcore
+
+COPY --chown=iotcore ./iot-core/ /home/iotcore/
+RUN mkdir /home/iotcore/iot_core/static
+
+WORKDIR /home/iotcore/
+CMD ["sh", "-c", "./init-core.sh"]

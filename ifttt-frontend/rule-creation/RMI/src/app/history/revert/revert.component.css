@@ -1,0 +1,89 @@
+.nav {
+    width: 100%;
+    line-height: 100px;
+    background: rgb(0, 153, 255);
+    font-family: Lato, sans-serif;
+    text-align: center;
+    color: #fff;
+    font-weight: bold;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+.nav h1 {
+    font-size: 48px;
+    margin: auto;
+    padding-right: 30px;
+}
+
+#snav-btn {
+    margin: 30px 20px;
+    color: #fff;
+}
+
+#snav-btn mat-icon {
+    font-size: 3.5em;
+}
+
+/* Side Nav */
+
+mat-sidenav-container {
+    height: 100%;
+}
+
+#snav-username {
+    margin: 20px 16px;
+}
+
+.location-list-item:hover {
+    background: #f2f2f2;
+}
+
+#logout {
+    margin-left: 16px;
+}
+
+#logout:hover {
+    cursor: pointer;
+}
+
+mat-card {
+    height: 120px;
+    margin: 5px 0px;
+    cursor: pointer;
+}
+
+.inactivecard {
+    cursor: not-allowed;
+    background-color: lightgray;
+    color: gray;
+}
+
+mat-card-title {
+    font-size: 20px;
+    font-weight: normal;
+}
+
+.back {
+    float: left;
+    margin-left: 30px;
+    font-size: 30px;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.dot {
+    height: 15px;
+    width: 15px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+u.editrule {
+    cursor: pointer;
+    color: brown;
+}

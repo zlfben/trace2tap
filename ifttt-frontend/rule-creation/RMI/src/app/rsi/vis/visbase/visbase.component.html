@@ -1,0 +1,84 @@
+<ng-container *ngIf="display">
+  <table>
+    <thead>
+      <tr>
+        <th><div class="tablehead">
+          <!-- <p class="tab-dev-name text-truncate" data-toggle="tooltip" data-placement="bottom">TIME</p> -->
+          <!-- <div class="tab-dev-name">{{getDateTimeFormat(trace.time_list[0].time)[1] | date:"MMMM d"}}</div> -->
+        </div></th>
+        <th>
+          <div class="tablehead">
+            <img src="{{getDeviceImg(devList[targetId])}}" class="rounded mx-auto d-block img-thumbnail tab-dev-pic">
+            <p class="tab-dev-name text-truncate" data-toggle="tooltip" data-placement="bottom" title="{{devList[targetId]}}">{{devList[targetId]}}</p>
+            <p class="tab-cap-name">{{capList[targetId]}}</p>
+          </div>
+        </th>
+        <th *ngFor="let d_i of tapSensorList[currentCluster]">
+          <div class="tablehead">
+            <img src="{{getDeviceImg(devList[d_i])}}" class="rounded mx-auto d-block img-thumbnail tab-dev-pic">
+            <p class="tab-dev-name text-truncate" data-toggle="tooltip" data-placement="bottom" title="{{devList[d_i]}}">{{devList[d_i]}}</p>
+            <p class="tab-cap-name">{{capList[d_i]}}</p>
+          </div>
+        </th>
+        <th *ngFor="let d_i of unrelated_devices_index">
+          <div class="tablehead">
+            <img src="{{getDeviceImg(devList[d_i])}}" class="rounded mx-auto d-block img-thumbnail tab-dev-pic">
+            <p class="tab-dev-name text-truncate" data-toggle="tooltip" data-placement="bottom" title="{{devList[d_i]}}">{{devList[d_i]}}</p>
+            <p class="tab-cap-name">{{capList[d_i]}}</p>
+          </div>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let trace of traceLogs; let j = index">
+        <ng-container *ngIf="maskList[j]">
+          <tr>
+            <td><div class="tabletimedate">{{getDateTimeFormat(trace.time_list[1].time)[1] | date:"MMMM d"}}</div></td>
+            <td class="init_target_column">
+              <vis-status [value]="trace.time_list[0].current_typ_vals[targetId]" [mode]="mode" [currentCluster]="currentCluster"></vis-status>
+            </td>
+            <td class="init_related_column" *ngFor="let value_i of tapSensorList[currentCluster]">
+              <vis-status [value]="trace.time_list[0].current_typ_vals[value_i]" [mode]="mode" [currentCluster]="currentCluster"></vis-status>
+            </td>
+            <td class="init_other_column" *ngFor="let value_i of unrelated_devices_index">
+              <vis-status [value]="trace.time_list[0].current_typ_vals[value_i]" [mode]="mode" [currentCluster]="currentCluster"></vis-status>
+            </td>
+          </tr>
+          <tr *ngFor="let status of trace.time_list.slice(1); let s_i = index">
+            <td>
+              <ng-container *ngIf="!getDateTimeFormat(status.time)[0]">
+                <div class="tabletime">{{getDateTimeFormat(status.time)[1] | date:"hh:mmaa"}}</div>
+              </ng-container>
+              <ng-container *ngIf="getDateTimeFormat(status.time)[0]">
+                <div class="tabletimebold">{{getDateTimeFormat(status.time)[1] | date:"hh:mmaa"}}</div>
+              </ng-container>
+            </td>
+            <td class="target_column">
+              <vis-status [value]="status.current_typ_vals[targetId]" [mode]="mode" [currentCluster]="currentCluster"></vis-status>
+            </td>
+            <td class="related_column" *ngFor="let value_i of tapSensorList[currentCluster]">
+              <vis-status [value]="status.current_typ_vals[value_i]" [mode]="mode" [currentCluster]="currentCluster"></vis-status>
+            </td>
+            <td class="other_column" *ngFor="let value_i of unrelated_devices_index">
+              <vis-status [value]="status.current_typ_vals[value_i]" [mode]="mode" [currentCluster]="currentCluster"></vis-status>
+            </td>
+          </tr>
+          <ng-container *ngIf="j!=getLastInMask(maskList)">
+            <tr>
+              <td></td>
+            </tr>
+            <tr>
+              <td><div class="centerdots">&#8942;</div></td>
+              <td><div class="centerdots">&#8942;</div></td>
+              <td *ngFor="let d_i of tapSensorList[currentCluster]"><div class="centerdots">&#8942;</div></td>
+              <td *ngFor="let d_i of unrelated_devices_index"><div class="centerdots">&#8942;</div></td>
+            </tr>
+            <tr>
+              <td></td>
+            </tr>
+          </ng-container>
+        </ng-container>
+      </ng-container>
+    </tbody>
+  </table>
+</ng-container>

@@ -1,0 +1,24 @@
+FROM ubuntu:xenial
+
+ARG FILENAME
+ARG FILENAMECORE
+
+RUN apt update && apt install -y python-software-properties software-properties-common postgresql-9.5 postgresql-client-9.5 postgresql-contrib-9.5
+RUN chown -R postgres:postgres /var/lib/postgresql/9.5/main
+
+ADD ./data/backup.sql /home/postgres/
+ADD $FILENAMECORE /home/postgres/iotcore.sql
+ADD $FILENAME /home/postgres/backup5.sql
+ADD ./scripts/init-db.sh /home/postgres/
+RUN chown postgres /home/postgres/init-db.sh
+RUN chmod +x /home/postgres/init-db.sh
+
+USER postgres
+
+RUN /etc/init.d/postgresql start
+
+RUN echo "host all  all    0.0.0.0/0  md5" >> /etc/postgresql/9.5/main/pg_hba.conf
+RUN echo "listen_addresses='*'" >> /etc/postgresql/9.5/main/postgresql.conf
+EXPOSE 5432
+
+CMD ["/usr/lib/postgresql/9.5/bin/postgres", "-D", "/var/lib/postgresql/9.5/main", "-c", "config_file=/etc/postgresql/9.5/main/postgresql.conf"]

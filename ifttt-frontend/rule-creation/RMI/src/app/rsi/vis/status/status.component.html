@@ -1,0 +1,41 @@
+<ng-container *ngFor="let tup of getValueType(value); let ii = index">
+  <ng-container *ngIf="tup[0]=='plain'">
+    <div class="plain" [ngStyle]="{'height': tup[2]}">{{tup[1]}}</div>
+  </ng-container>
+  <ng-container *ngIf="tup[0]=='motion'">
+    <div class="coral_dot" [ngStyle]="{'height': tup[2]}" data-toggle="tooltip" data-placement="right" title="Motion started/stopped"></div>
+  </ng-container>
+  <ng-container *ngIf="tup[0]=='on'">
+    <div class="triangle-on-text" [ngStyle]="{'height': tup[2]}" data-toggle="tooltip" data-placement="right" title="Device on/open">{{tup[1]}}</div>
+  </ng-container>
+  <ng-container *ngIf="tup[0]=='off'">
+    <div class="triangle-off-text" [ngStyle]="{'height': tup[2]}" data-toggle="tooltip" data-placement="right" title="Device off/closed">{{tup[1]}}</div>
+  </ng-container>
+  <ng-container *ngIf="tup[0]=='line'">
+    <div class="line" [ngStyle]="{'height': tup[2]}"></div>
+  </ng-container>
+  <ng-container *ngIf="tup[0]=='solid_line_green'">
+    <div class="solid_line_green" [ngStyle]="{'height': tup[2]}"></div>
+  </ng-container>
+  <ng-container *ngIf="tup[0]=='solid_line_coral'">
+    <div class="solid_line_coral" [ngStyle]="{'height': tup[2]}"></div>
+  </ng-container>
+  <ng-container *ngIf="tup[0]=='blue_dot' && mode == 0">
+    <div class="blue_dot" [ngStyle]="{'height': tup[2]}" data-toggle="tooltip" data-placement="right" title="Rule triggered"></div>
+  </ng-container>
+  <ng-container *ngIf="tup[0]=='blue_dot' && mode == 1">
+    <div class="canceled" [ngStyle]="{'height': tup[2]}" data-toggle="tooltip" data-placement="right" title="Rule triggered">&#x2716;</div>
+  </ng-container>
+  <ng-container *ngIf="tup[0]=='orig' || tup[0]=='origv'">
+    <div class="orig_trigger" [ngStyle]="{'height': tup[2]}" data-toggle="tooltip" data-placement="right" title="This action is triggered by original rules you have.">&#9889;{{tup[1]}}</div>
+  </ng-container>
+  <ng-container *ngIf="tup[0]=='newtap'">
+    <div class="newtap" [ngStyle]="{'height': tup[2]}" data-toggle="tooltip" data-placement="right" title="The new rule would have been triggered here.">&#9889;{{tup[1]}}</div>
+  </ng-container>
+  <ng-container *ngIf="tup[0]=='del' && mode == 1">
+    <div class="del_trigger" [ngStyle]="{'height': tup[2]}" data-toggle="tooltip" data-placement="right" title="This action would not have been triggered if patch applied.">&#9889;{{tup[1]}}</div>
+  </ng-container>
+  <ng-container *ngIf="tup[0]=='del' && mode == 2">
+    <div class="orig_trigger" [ngStyle]="{'height': tup[2]}" data-toggle="tooltip" data-placement="right" title="This action would not have been triggered if patch applied.">&#9889;{{tup[1]}}</div>
+  </ng-container>
+</ng-container>

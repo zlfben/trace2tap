@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Synthesize</title>
+</head>
+<body>
+    Please select the command you want TraceRuler to learn:
+    <form action="/backend/autotap/trace/" method="post">
+        <select name="action_chosen" size="30">
+            {% for action in action_list %}
+                <option value="{{ action }}">{{ action }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <input type="hidden" name="location" value="{{ location }}" />
+        <input type="submit" name="action" value="Choose Action">
+    </form>
+</body>
+</html>

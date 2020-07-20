@@ -1,0 +1,28 @@
+<mat-nav-list>
+  <ng-container *ngIf="userDataService.currentCommand.count-userDataService.currentCommand.covered>=4">
+    <mat-list-item (click)="learnFN()">
+      <span mat-line class="t1">Suggest a new rule</span>
+    </mat-list-item>
+  </ng-container>
+
+  <ng-container *ngIf="!(userDataService.currentCommand.count-userDataService.currentCommand.covered>=4)">
+    <mat-list-item class="inactive">
+      <span mat-line class="t1">Suggest a new rule</span>
+    </mat-list-item>
+  </ng-container>
+
+
+  <ng-container *ngIf="userDataService.currentCommand.reverted>=2">
+    <mat-list-item (click)="learnFP()">
+      <span mat-line class="t1">Fix existing rule(s)</span>
+      <span mat-line class="t2">The rule sometimes triggers at the wrong time.</span>
+    </mat-list-item>
+  </ng-container>
+
+  <ng-container *ngIf="!(userDataService.currentCommand.reverted>=2)">
+    <mat-list-item class="inactive">
+      <span mat-line class="t1">Fix existing rule(s)</span>
+      <span mat-line class="t2">The rule sometimes triggers at the wrong time.</span>
+    </mat-list-item>
+  </ng-container>
+</mat-nav-list>

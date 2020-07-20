@@ -1,0 +1,109 @@
+.line {
+  height: 100%;
+  width: 0px;
+  border: 2.5px dotted coral;
+  border-top-style: dotted;
+  border-right-style: dotted;
+  border-bottom-style: dotted;
+  border-left-style: dotted;
+  border-style: none dotted;
+  margin: auto;
+}
+
+.solid_line_green {
+  height: 100%;
+  width: 2px;
+  background-color: green;
+  margin: auto;
+  z-index: 1;
+}
+
+.solid_line_coral {
+  height: 100%;
+  width: 2px;
+  background-color: coral;
+  margin: auto;
+  z-index: 1;
+}
+
+.triangle-on {
+  width: 0;
+  height: 0;
+  border-top: 0.35em solid transparent;
+  border-left: 0.8em solid #15986b;
+  border-bottom: 0.35em solid transparent;
+  margin: auto;
+}
+
+.triangle-off {
+  width: 0;
+  height: 0;
+  border-top: 0.35em solid transparent;
+  border-right: 0.8em solid #555;
+  border-bottom: 0.35em solid transparent;
+  margin: auto;
+  }
+  
+.triangle-on-text {
+  color: #15986b;
+  margin: auto;
+  font-size: 12px;
+}
+
+.triangle-off-text {
+  color: #555;
+  margin: auto;
+  font-size: 12px;
+}
+
+.orig_trigger {
+  width: 50px;
+  font-size: 12px;
+  background-color: #efefef;
+  display: inline-block;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.del_trigger {
+  width: 50px;
+  font-size: 12px;
+  background-color: #ea9999;
+  display: inline-block;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.newtap {
+  width: 50px;
+  font-size: 12px;
+  background-color:#ffe599;
+  display: inline-block;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.coral_dot {
+  height: 0.5em;
+  width: 0.5em;
+  background-color: coral;
+  border-radius: 50%;
+  margin: auto;
+}
+
+.blue_dot {
+  height: 0.5em;
+  width: 0.5em;
+  background-color: blue;
+  border-radius: 50%;
+  margin: auto;
+}
+
+.plain {
+  width: 100%;
+  font-size: 12px;
+}
+
+.canceled {
+  color: blue;
+}
