@@ -1,0 +1,175 @@
+version: "3.1"
+services:
+    postgres:
+      image: "zlfben/trace2tap_postgres:latest"
+      secrets:
+        - db_password
+        - db_username
+      volumes:
+        - pg_data:/var/lib/postgresql/9.5/main
+    
+    backend:
+      image: "zlfben/trace2tap_backend:latest"
+      depends_on:
+        - postgres
+      volumes:
+        - ./iot-tap-backend:/home/iftttuser/backend
+        - ./iot-autotap/autotapmc:/home/iftttuser/backend/autotapmc
+        - ./iot-autotap/autotapta:/home/iftttuser/backend/autotapta
+        # - static_backend:/home/iftttuser/iot-tap-backend/static
+      expose: 
+        - "8000"
+      secrets:
+        - source: backend_admin_name
+          target: admin_name
+        - source: backend_admin_email
+          target: admin_email
+        - source: backend_admin_password
+          target: back_admin_password
+        - db_password
+        - db_username
+        - backend_django_secret
+        - client_id
+        - client_secret
+      environment:
+        - PYTHONUNBUFFERED=1
+        - "MIGRATION=${MIGRATION}"
+        - "DEBUG=true"
+
+    celery_beat:
+      image: "zlfben/trace2tap_celery_beat:latest"
+      command: sh -c ../init-celery-beat.sh
+      depends_on:
+        - backend
+        - redis
+        - postgres
+      volumes:
+        - ./iot-tap-backend:/home/iftttuser/backend
+        - ./iot-autotap/autotapmc:/home/iftttuser/backend/autotapmc
+        - ./iot-autotap/autotapta:/home/iftttuser/backend/autotapta
+      secrets:
+        - source: backend_admin_name
+          target: admin_name
+        - source: backend_admin_email
+          target: admin_email
+        - source: backend_admin_password
+          target: back_admin_password
+        - db_password
+        - db_username
+        - backend_django_secret
+        - client_id
+        - client_secret
+      environment:
+        - PYTHONUNBUFFERED=1
+        - "MIGRATION=${MIGRATION}"
+        - "DEBUG=true"
+
+    celery_worker:
+      image: "zlfben/trace2tap_celery_worker:latest"
+      command: sh -c ../init-celery-worker.sh
+      depends_on:
+        - backend
+        - redis
+        - postgres
+      volumes:
+        - ./iot-tap-backend:/home/iftttuser/backend
+        - ./iot-autotap/autotapmc:/home/iftttuser/backend/autotapmc
+        - ./iot-autotap/autotapta:/home/iftttuser/backend/autotapta
+      secrets:
+        - source: backend_admin_name
+          target: admin_name
+        - source: backend_admin_email
+          target: admin_email
+        - source: backend_admin_password
+          target: back_admin_password
+        - db_password
+        - db_username
+        - backend_django_secret
+        - client_id
+        - client_secret
+      environment:
+        - PYTHONUNBUFFERED=1
+        - "MIGRATION=${MIGRATION}"
+        - "DEBUG=true"
+    
+    frontend:
+      image: "zlfben/trace2tap_frontend:latest"
+      volumes:
+        - ./ifttt-frontend/rule-creation/RMI/:/home/superifttt/frontend/
+      expose:
+        - "4200"
+
+    iotcore:
+      image: "zlfben/trace2tap_iotcore:latest"
+      depends_on:
+        - postgres
+      volumes:
+        - ./iot-core:/home/iotcore/iotcore
+        - static_iotcore:/home/iotcore/iot_core/static
+      expose:
+        - "8001"
+      secrets:
+        - source: iotcore_admin_name
+          target: admin_name
+        - source: iotcore_admin_email
+          target: admin_email
+        - source: iotcore_admin_password
+          target: core_admin_password
+        - db_username
+        - db_password
+        - iotcore_django_secret
+        - client_id
+        - client_secret
+      environment:
+        - PYTHONUNBUFFERED=1
+        - "MIGRATION=${MIGRATION}"
+        - "DEBUG=true"
+    
+    nginx:
+      image: "zlfben/trace2tap_nginx:latest"
+      depends_on:
+        - iotcore
+        - backend
+      volumes:
+        - static_iotcore:/etc/iotcore/static
+        - static_backend:/etc/backend/static
+      ports:
+        - "80:80"
+        - "443:443"
+
+    redis:
+      image: redis
+      # ports:
+      #   - "6379:6379"
+      restart: always
+
+secrets:
+  iotcore_admin_name:
+    file: ./secrets/iotcore_admin_name
+  iotcore_admin_email:
+    file: ./secrets/iotcore_admin_email
+  iotcore_admin_password:
+    file: ./secrets/iotcore_admin_password
+  backend_admin_name:
+    file: ./secrets/backend_admin_name
+  backend_admin_email:
+    file: ./secrets/backend_admin_email
+  backend_admin_password:
+    file: ./secrets/backend_admin_password
+  db_username:
+    file: ./secrets/db_username
+  db_password:
+    file: ./secrets/db_password
+  iotcore_django_secret:
+    file: ./secrets/iotcore_django_secret
+  backend_django_secret:
+    file: ./secrets/backend_django_secret
+  client_id:
+    file: ./secrets/client_id
+  client_secret:
+    file: ./secrets/client_secret
+
+volumes:
+  static_iotcore:
+  static_backend:
+  pg_data:
