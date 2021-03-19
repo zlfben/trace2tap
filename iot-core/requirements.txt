@@ -1,4 +1,4 @@
-djangorestframework==3.9.2
+djangorestframework==3.11.2
 markdown==2.6.11
 Django==2.2
 pytz==2018.5
