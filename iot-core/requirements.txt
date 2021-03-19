@@ -1,6 +1,6 @@
 djangorestframework==3.9.2
 markdown==2.6.11
-Django==2.2
+Django==2.2.18
 pytz==2018.5
 django-filter==2.0.0
 beautifulsoup4==4.6.3
