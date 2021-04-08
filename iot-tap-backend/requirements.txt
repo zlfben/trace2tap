@@ -1,4 +1,4 @@
-Django==2.2
+Django==2.2.20
 pytz==2018.3
 psycopg2-binary==2.7.5
 django-cors-headers==2.4.0
